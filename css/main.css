@@ -1,0 +1,41 @@
+.gameBoard{
+    width: 100%;
+    margin: auto;
+    padding: 1rem;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    
+}.container{
+    width: 80%;
+    margin: 1rem auto;
+    background-image: url("../img/bg.jpg");
+    background-position: -29rem;
+    background-position-y: -25rem;
+    padding: 1rem;
+    
+}.rect {
+    background-color: whitesmoke;
+    width: 4rem;
+    height: 400px;
+    margin: auto ;
+    
+}
+#innerRect {
+    background-color: blue;
+    width: 4rem;
+    height: 20%;
+    /* transform: translateY(5rem); */
+    opacity: .5;
+    
+}
+#fish {
+    width: 4rem;
+    animation: fishJump 15s infinite;
+}
+@keyframes fishJump{
+    0% {transform: translateY(15rem)}
+    50% {transform: translateY(-2rem)}
+    100% {transform: translateY(15rem)}
+    }
