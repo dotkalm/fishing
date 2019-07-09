@@ -8,6 +8,9 @@
 .gameBoard h1{
     animation: title .5s infinite;
 }
+.titleScreen{
+    height: 32px;
+}
 @keyframes title{
     0% {transform: rotate(-20deg)scale(.01)}
     50% {transform: rotate(5deg)translateY(-.2rem)}
@@ -34,16 +37,15 @@
     height: 400px;
 }
 .fishStatsBox {
-    background-color: greenyellow;
+    background-color: maroon;
     width: 1rem;
     margin: auto ;
     height: 400px;
 }
 #fishStats {
-    background-color: green;
+    background-color: maroon;
     width: 1rem;
     margin: auto ;
-    height: 300px;
 }
 #innerRect {
     background-color: blue;
