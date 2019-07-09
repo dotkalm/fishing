@@ -1,30 +1,22 @@
-
-
-const goFishing = (() =>{
-    const title = document.querySelector('.titleScreen');
-    const titleScreen = document.createElement('h1')
-    titleScreen.innerText = 'Stardew Fishing';
-    title.appendChild(titleScreen);
-})
-
+let fishPosition = 290
 
 const fishingPole = (()=>{
     let poleY = 0;
     const net = document.querySelector('#innerRect');
     const animate = setInterval(() =>{
-        poleY += .01;
-        net.setAttribute('style', `transform:translateY(${poleY}rem)`)
-        if(poleY >= 18.5){
+        poleY += .1;
+        net.setAttribute('style', `transform:translateY(${poleY}px)`)
+        if(poleY >= 336){
             poleY = 0;
         }
-    }, 10)  
+    }, 5)  
     window.onkeyup = function(e) {
         const key = e.keyCode ? e.keyCode : e.which;
         if (key == 40) {
-            poleY += .25;
+            poleY += 5;
             console.log('up')
         }else if (key == 38) {
-            poleY -= .25;
+            poleY -= 5;
             console.log('down')
         }
     }
@@ -32,18 +24,26 @@ const fishingPole = (()=>{
 
 const fishOnHook = (() => {
     const fish = document.querySelector('#fish');
-    let fishPosition = 17.2
     const animate = setInterval(() => {
-        fishPosition -= .01;
-        fish.setAttribute('style', `transform:translateY(${fishPosition}rem)`)
-        if(fishPosition <= 0){
-            fishPosition = 17.2;
+        fishPosition -= .1;
+        fish.setAttribute('style', `transform:translateY(${fishPosition}px)`)
+        if(fishPosition <= -65){
+            fishPosition = 290;
         }
-    }, 20)
+    }, 10)
+})
+const hookedAlert = (() =>{
+    const title = document.querySelector('.titleScreen');
+    const titleScreen = document.createElement('h1')
+    titleScreen.innerText = 'Hooked!';
+    title.appendChild(titleScreen);
+    const clearTitle = setTimeout(() =>{
+        title.style.visibility = 'hidden';
+    },500)
 })
 
 fishingPole();
-goFishing();
+hookedAlert();
 fishOnHook();
 
 

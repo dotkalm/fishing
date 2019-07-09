@@ -4,9 +4,17 @@
     text-align: center;
     font-family: 'Holtwood One SC', serif;
     font-size: 20px;
-    /* animation: fishJump 15s infinite; */
-    
-}.container{
+}
+.gameBoard h1{
+    animation: title .5s infinite;
+}
+@keyframes title{
+    0% {transform: rotate(-20deg)scale(.01)}
+    50% {transform: rotate(5deg)translateY(-.2rem)}
+    100% {opacity: 0;
+        transform: rotate(5deg)translateY(.2rem)}
+    }
+.container{
     width: 80%;
     margin: 1rem auto;
     background-image: url("../img/bg.jpg");
@@ -14,26 +22,38 @@
     background-position-y: -25rem;
     padding: 1rem;
     
-}.rect {
+}
+.rect {
     background-color: whitesmoke;
     width: 4rem;
     height: 400px;
     margin: auto ;
-    
+}
+.lake {
+    display: inline-flex;
+    height: 400px;
+}
+.fishStatsBox {
+    background-color: greenyellow;
+    width: 1rem;
+    margin: auto ;
+    height: 400px;
+}
+#fishStats {
+    background-color: green;
+    width: 1rem;
+    margin: auto ;
+    height: 300px;
 }
 #innerRect {
     background-color: blue;
     width: 4rem;
-    height: 20%;
+    height: 4rem;
     /* transform: translateY(5rem); */
     opacity: .5;
     
 }
 #fish {
     width: 4rem;
+    /* transform: translateY(-4rem); */
 }
-/* @keyframes fishJump{
-    0% {transform: translateY(15rem)}
-    50% {transform: translateY(-2rem)}
-    100% {transform: translateY(15rem)}
-    } */
