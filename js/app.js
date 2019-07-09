@@ -1,5 +1,6 @@
 let fishPosition = 290
 let pole = -1
+let up = true
 
 const fishingPole = (()=>{
     const net = document.querySelector('#innerRect');
@@ -24,12 +25,22 @@ const fishingPole = (()=>{
 const fishOnHook = (() => {
     const fish = document.querySelector('#fish');
     const animate = setInterval(() => {
-        fishPosition -= .15;
+        console.log(fishPosition)
         fish.setAttribute('style', `transform:translateY(${fishPosition}px)`)
-        if(fishPosition <= -65){
-            fishPosition = 290;
+        if(fishPosition === -80 ){
+            console.log("im at the top")
+            fishPosition +=2
+            up = false
+        }else if(fishPosition === 290){
+            fishPosition -=2
+            up = true
+        
+        }else if(!up){
+            fishPosition +=2
+        } else if(up){
+            fishPosition -= 2
         }
-    }, 10)
+    }, 100)
 })
 // rgb(100,0,0) - dark red
 const fishStats = (() => {
@@ -64,10 +75,10 @@ const fishStats = (() => {
                 title.appendChild(titleScreen);
                 const container = document.querySelector('.gameBoard');
                 title.style.visibility = 'visible';
+                clearInterval(moveFish);   
                 const clearTitle = setTimeout(() =>{
-                    clearInterval(moveFish);   
+                    
                     container.style.visibility = 'hidden';
-                    titleScreen.innerText = '';
                     return
                 },800)
             }
