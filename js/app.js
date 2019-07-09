@@ -27,7 +27,7 @@ const fishOnHook = (() => {
     const animate = setInterval(() => {
         console.log(fishPosition)
         fish.setAttribute('style', `transform:translateY(${fishPosition}px)`)
-        if(fishPosition === -80 ){
+        if(fishPosition === -74 ){
             console.log("im at the top")
             fishPosition +=2
             up = false
@@ -42,7 +42,6 @@ const fishOnHook = (() => {
         }
     }, 100)
 })
-// rgb(100,0,0) - dark red
 const fishStats = (() => {
     let r = 100;
     let g = 0;
