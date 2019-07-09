@@ -37,16 +37,15 @@
     height: 400px;
 }
 .fishStatsBox {
-    background-color: maroon;
     width: 1rem;
     margin: auto ;
     height: 400px;
 }
-#fishStats {
+/* #fishStats {
     background-color: maroon;
     width: 1rem;
     margin: auto ;
-}
+} */
 #innerRect {
     background-color: blue;
     width: 4rem;

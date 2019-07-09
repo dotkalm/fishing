@@ -1,22 +1,22 @@
 let fishPosition = 290
+let pole = -1
 
 const fishingPole = (()=>{
-    let poleY = -1;
     const net = document.querySelector('#innerRect');
     const animate = setInterval(() =>{
-        poleY += .2;
-        net.setAttribute('style', `transform:translateY(${poleY}px)`)
-        if(poleY >= 336){
-            poleY = 0;
+        pole += .2;
+        net.setAttribute('style', `transform:translateY(${pole}px)`)
+        if(pole >= 336){
+            pole = 0;
         }
-    }, 10)  
+    }, 50)  
 
     window.onkeyup = function(e) {
         const key = e.keyCode ? e.keyCode : e.which;
         if (key == 40) {
-            poleY += 5;
+            pole += 5;
         }else if (key == 38) {
-            poleY -= 5;
+            pole -= 5;
         }
     }
 })
@@ -24,18 +24,20 @@ const fishingPole = (()=>{
 const fishOnHook = (() => {
     const fish = document.querySelector('#fish');
     const animate = setInterval(() => {
-        fishPosition -= .1;
+        fishPosition -= .15;
         fish.setAttribute('style', `transform:translateY(${fishPosition}px)`)
         if(fishPosition <= -65){
             fishPosition = 290;
         }
     }, 10)
 })
-{/* <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="100px" height="2500px" viewBox="0 0 100 2500">
-<rect fill="#ffffff" width="100" height="2000"/>
-</svg> */}
+// rgb(100,0,0) - dark red
 const fishStats = (() => {
+    let r = 100;
+    let g = 0;
+    let statBar = 390;
+    let range = 0
+    let holdFor3Seconds = 0
     const fishStats = document.querySelector('.fishStatsBox');
     const element = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
     const statsBox = document.querySelector('svg');
@@ -43,19 +45,50 @@ const fishStats = (() => {
     element.setAttribute('width', '100px')
     element.setAttribute('height', `200px`)
     statsBox.setAttribute('width', '100%')
+    
     fishStats.appendChild(statsBox);
     statsBox.appendChild(element);
     const moveFish = setInterval(() => {
-        element.setAttribute('height', `${fishPosition}px`)
-    }, 30)
+        element.setAttribute('height', `${statBar}px`)
+        fishStats.setAttribute('style', `background-color: rgb(${r},${g},0)`);
+        range = pole - fishPosition;
+        if (range >= 46 && range <= 72){
+            r -= 1;
+            g += 1;
+            statBar -= 2.5;  
+            holdFor3Seconds += 60;
+            if (statBar<=0){
+                const title = document.querySelector('.titleScreen');
+                const titleScreen = document.createElement('h2')
+                titleScreen.innerText = 'Nice Catch!';
+                title.appendChild(titleScreen);
+                const container = document.querySelector('.gameBoard');
+                title.style.visibility = 'visible';
+                const clearTitle = setTimeout(() =>{
+                    clearInterval(moveFish);   
+                    container.style.visibility = 'hidden';
+                    titleScreen.innerText = '';
+                    return
+                },800)
+            }
+        }
+        else if (range < 40 || range > 80){
+            r = 100;
+            g = 0;
+            statBar = 390;
+            holdFor3Seconds = 0;
+        }
+    },80)
+    
 })
 const hookedAlert = (() =>{
     const title = document.querySelector('.titleScreen');
     const titleScreen = document.createElement('h1')
-    titleScreen.innerText = 'Hooked!';
+    titleScreen.innerText = 'Hit!';
     title.appendChild(titleScreen);
     const clearTitle = setTimeout(() =>{
         title.style.visibility = 'hidden';
+        titleScreen.innerText = '';
     },500)
 })
 
