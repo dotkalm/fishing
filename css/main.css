@@ -13,27 +13,22 @@
     height: 32px;
 
 }
-svg #vertical{
-    animation: scrollv 100s infinite
+svg #odd{
+    animation: odd 10s infinite
 
 }
-svg #horizontal{
-    animation: scroll 20s infinite
+svg #even{
+    animation: even 8s infinite
 }
-@keyframes scroll{
-    0% {transform: translateY(3rem);
-        transform: rotate(-5deg)}
-    50%{transform: translateY(0rem);
-        transform: rotate(10deg)}
-    80%{transform: translateY(-2rem);
-            transform: rotate(-8deg)}
-    100%{transform: translateY(3rem);
-        transform: rotate(-5deg)}
+@keyframes odd{
+    0% {transform: translatex(0rem)}
+    60%{transform: translatex(-1rem)}
+    100%{transform: translatex(0rem)}
 }
-@keyframes scrollv{
-    0% {transform: translateX(2rem)}
-    50%{transform: translateX(-2.5rem)}
-    100%{transform: translateX(2rem)}
+@keyframes even{
+    0% {transform: translateX(1rem)}
+    50%{transform: translateX(4rem)}
+    100%{transform: translateX(1rem)}
 }
 @keyframes title{
     0% {transform: rotate(-20deg)scale(.01)}
@@ -86,3 +81,11 @@ svg #horizontal{
     width: 4rem;
     /* transform: translateY(-4rem); */
 }
+#wavesClass{
+    display: none;
+}
+#fishInWater{
+    /* width: 7rem; */
+    transform: translateY(10rem);
+}
+

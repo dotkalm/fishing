@@ -1,36 +1,48 @@
 const lake = {
+    moveWaves(){
+        const waves = document.querySelectorAll('path');
+        const jiggle = setInterval(() => {
+            waves.forEach((item, index)=>{
+                if (index % 2 === 0){
+                    waves[index].setAttribute('id','even')
+                } else {
+                    waves[index].setAttribute('id','odd')
+
+                }
+            });
+        }, 100)
+        
+    },
+    fishSwimming(){
+        const waves = document.querySelector('svg');
+        const fishIcon = document.createElement('img')
+        const wavesClass = document.querySelector('.wavesClass');
+        const fishy = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        fishy.setAttribute('id','fishInWater')
+        fishy.setAttribute('fill','#000000');
+        fishy.setAttribute('d','M183.438,126.222c-6.108,0-11.441,3.718-14.41,6.899l-5.928-4.483c-0.823-0.624-2.053,0.041-1.843,0.995 l1.642,7.451l-1.642,7.451c-0.211,0.955,1.019,1.618,1.842,0.995l5.929-4.484c2.968,3.181,8.302,6.898,14.41,6.898 c9.33,0,16.896-8.688,16.896-10.861S192.768,126.222,183.438,126.222z M189.373,138.712c-0.899,0-1.629-0.729-1.629-1.629 c0-0.9,0.729-1.629,1.629-1.629c0.9,0,1.629,0.729,1.629,1.629C191.001,137.983,190.272,138.712,189.373,138.712z')
+        // fishIcon.setAttribute('src', 'img/fish-solid.svg')
+        
+        waves.insertBefore(fishy, waves.children[18])
+        // console.log(waves.children[10])
+        // wavesNodeList[20].getTotalLength()
+    },
     lakeRipple(){
+        const wavesClass = document.querySelector('.wavesClass');
+        wavesClass.style.display = 'flex';
+        wavesClass.setAttribute('style','transform: translateY(-35rem);')
         const topSvg = document.querySelector('svg');
+        // topSvg.style.transform='rotate(180deg)'
         topSvg.style.display = 'inline';
         const container = document.querySelector('.container')
         container.style.display ='none';
         const lakeFront = document.querySelector('.container')
         const gameBoard = document.querySelector('.gameBoard')
-        gameBoard.style.display ='block'
-        //<object data="img/waves.svg" type="image/svg+xml"
-        //id="alphasvg" width="100%" height="400%"></object>
-        const wavesNodeList = document.querySelector('#rippleWaves')
-        // wavesNodeList.setAttribute('style', 'transform: rotateX(-44deg) rotate3d(0, -48, 31, 180deg)')
-        // const svgDoc = wavesNodeList.contentDocument;
-        // const test = svgDoc.querySelector('.one')
-        // wavesNodeList.addEventListener('load', ()=> {
-        //     const nodes = wavesNodeList.contentDocument
-        //     console.log(nodes)
-        // })
-        // console.log(wavesNodeList.data)
-        
+        gameBoard.style.display ='inline'
+        this.moveWaves()
+        this.fishSwimming()
     },
-    moveWaves(){
-        
-
-        // wavesNodeList.forEach((item, index)=>{
-        //     if (index % 2 === 0){
-        //         wavesNodeList[index].setAttribute('style','transform:translatex(5rem)')
-        //     } else {
-        //         wavesNodeList[index].setAttribute('style','transform:translatex(-5rem)')
-        //     }
-        // });
-    }
+    
     
 }
 const gameObject = {
