@@ -4,12 +4,36 @@
     text-align: center;
     font-family: 'Holtwood One SC', serif;
     font-size: 20px;
+    height: 10rem;
 }
 .gameBoard h1{
     animation: title .5s infinite;
 }
 .titleScreen{
     height: 32px;
+
+}
+svg #vertical{
+    animation: scrollv 100s infinite
+
+}
+svg #horizontal{
+    animation: scroll 20s infinite
+}
+@keyframes scroll{
+    0% {transform: translateY(3rem);
+        transform: rotate(-5deg)}
+    50%{transform: translateY(0rem);
+        transform: rotate(10deg)}
+    80%{transform: translateY(-2rem);
+            transform: rotate(-8deg)}
+    100%{transform: translateY(3rem);
+        transform: rotate(-5deg)}
+}
+@keyframes scrollv{
+    0% {transform: translateX(2rem)}
+    50%{transform: translateX(-2.5rem)}
+    100%{transform: translateX(2rem)}
 }
 @keyframes title{
     0% {transform: rotate(-20deg)scale(.01)}
@@ -27,12 +51,16 @@
     
 }
 .rect {
-    background-color: whitesmoke;
+    /* ; */
     width: 4rem;
     height: 400px;
     margin: auto ;
 }
 .lake {
+    display: inline-flex;
+    height: 400px;
+}
+.lakeDiv {
     display: inline-flex;
     height: 400px;
 }
