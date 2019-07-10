@@ -69,7 +69,7 @@ const gameObject = {
         window.onclick = function(e) {
             gameObject.pole -= 13;
             }
-        window.onkeyup = function(e) {
+        window.onkeydown = function(e) {
             gameObject.pole -= 13;
         }
     },
@@ -130,7 +130,6 @@ const gameObject = {
                     const clearTitle = setTimeout(() =>{  
                         titleScreen.style.display='none';
                         container.style.display = 'none';
-                        this.hide = !this.hide
                         lake.lakeRipple();
                     },1000)
                 }
@@ -151,16 +150,14 @@ const gameObject = {
         const clearTitle = setTimeout(() =>{
             title.style.visibility = 'hidden';
             titleScreen.innerText = '';
-        },500)
+        },1000)
     },
     gameInit(){
         const container = document.querySelector('.container')
         container.style.display = 'block';
         const topSvg = document.querySelector('svg');
         topSvg.style.display = 'none';
-        
         const fish = document.querySelector('#fish')
-        const lake = document.querySelector('.lake')
         const rect = document.querySelector('.rect')
         const innerRect = document.querySelector('#innerRect')
         const fishIcon = document.createElement('img')

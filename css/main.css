@@ -7,7 +7,7 @@
     height: 10rem;
 }
 .gameBoard h1{
-    animation: title .5s infinite;
+    animation: title 1s infinite;
 }
 .titleScreen{
     height: 32px;
@@ -64,11 +64,6 @@ svg #even{
     margin: auto ;
     height: 400px;
 }
-/* #fishStats {
-    background-color: maroon;
-    width: 1rem;
-    margin: auto ;
-} */
 #innerRect {
     background-color: blue;
     width: 4rem;
@@ -85,7 +80,7 @@ svg #even{
     display: none;
 }
 #fishInWater{
-    animation: fishy 10s infinite;
+    animation: fishy 12s infinite;
     ;
 }
 @keyframes fishy{
