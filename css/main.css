@@ -4,12 +4,31 @@
     text-align: center;
     font-family: 'Holtwood One SC', serif;
     font-size: 20px;
+    height: 10rem;
 }
 .gameBoard h1{
-    animation: title .5s infinite;
+    animation: title 1s infinite;
 }
 .titleScreen{
     height: 32px;
+
+}
+svg #odd{
+    animation: odd 10s infinite
+
+}
+svg #even{
+    animation: even 8s infinite
+}
+@keyframes odd{
+    0% {transform: translatex(0rem)}
+    60%{transform: translatex(-2rem)}
+    100%{transform: translatex(0rem)}
+}
+@keyframes even{
+    0% {transform: translateX(1rem)}
+    50%{transform: translateX(4rem)}
+    100%{transform: translateX(1rem)}
 }
 @keyframes title{
     0% {transform: rotate(-20deg)scale(.01)}
@@ -27,7 +46,7 @@
     
 }
 .rect {
-    background-color: whitesmoke;
+    /* ; */
     width: 4rem;
     height: 400px;
     margin: auto ;
@@ -36,16 +55,15 @@
     display: inline-flex;
     height: 400px;
 }
+.lakeDiv {
+    display: inline-flex;
+    height: 400px;
+}
 .fishStatsBox {
     width: 1rem;
     margin: auto ;
     height: 400px;
 }
-/* #fishStats {
-    background-color: maroon;
-    width: 1rem;
-    margin: auto ;
-} */
 #innerRect {
     background-color: blue;
     width: 4rem;
@@ -58,3 +76,15 @@
     width: 4rem;
     /* transform: translateY(-4rem); */
 }
+#wavesClass{
+    display: none;
+}
+#fishInWater{
+    animation: fishy 12s infinite;
+    ;
+}
+@keyframes fishy{
+    0% {transform: translate3d(-15rem, 9rem, 10rem)}
+    100% {transform: translate3d(15rem, 9rem, 10rem)}
+    }
+
