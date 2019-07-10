@@ -22,7 +22,7 @@ svg #even{
 }
 @keyframes odd{
     0% {transform: translatex(0rem)}
-    60%{transform: translatex(-1rem)}
+    60%{transform: translatex(-2rem)}
     100%{transform: translatex(0rem)}
 }
 @keyframes even{
@@ -85,7 +85,11 @@ svg #even{
     display: none;
 }
 #fishInWater{
-    /* width: 7rem; */
-    transform: translateY(10rem);
+    animation: fishy 10s infinite;
+    ;
 }
+@keyframes fishy{
+    0% {transform: translate3d(-15rem, 9rem, 10rem)}
+    100% {transform: translate3d(15rem, 9rem, 10rem)}
+    }
 

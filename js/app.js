@@ -1,46 +1,46 @@
 const lake = {
+    goFishing(){
+        gameObject.gameOver=false
+        document.querySelector('.wavesClass').addEventListener('click', e =>{ 
+            if (e.target.id === 'fishInWater'){
+                gameObject.gameInit();
+            }
+        })
+    },
     moveWaves(){
         const waves = document.querySelectorAll('path');
-        const jiggle = setInterval(() => {
             waves.forEach((item, index)=>{
                 if (index % 2 === 0){
                     waves[index].setAttribute('id','even')
                 } else {
                     waves[index].setAttribute('id','odd')
-
                 }
             });
-        }, 100)
+    
         
     },
     fishSwimming(){
         const waves = document.querySelector('svg');
-        const fishIcon = document.createElement('img')
-        const wavesClass = document.querySelector('.wavesClass');
         const fishy = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         fishy.setAttribute('id','fishInWater')
         fishy.setAttribute('fill','#000000');
         fishy.setAttribute('d','M183.438,126.222c-6.108,0-11.441,3.718-14.41,6.899l-5.928-4.483c-0.823-0.624-2.053,0.041-1.843,0.995 l1.642,7.451l-1.642,7.451c-0.211,0.955,1.019,1.618,1.842,0.995l5.929-4.484c2.968,3.181,8.302,6.898,14.41,6.898 c9.33,0,16.896-8.688,16.896-10.861S192.768,126.222,183.438,126.222z M189.373,138.712c-0.899,0-1.629-0.729-1.629-1.629 c0-0.9,0.729-1.629,1.629-1.629c0.9,0,1.629,0.729,1.629,1.629C191.001,137.983,190.272,138.712,189.373,138.712z')
-        // fishIcon.setAttribute('src', 'img/fish-solid.svg')
-        
         waves.insertBefore(fishy, waves.children[18])
-        // console.log(waves.children[10])
-        // wavesNodeList[20].getTotalLength()
     },
     lakeRipple(){
         const wavesClass = document.querySelector('.wavesClass');
         wavesClass.style.display = 'flex';
         wavesClass.setAttribute('style','transform: translateY(-35rem);')
         const topSvg = document.querySelector('svg');
-        // topSvg.style.transform='rotate(180deg)'
         topSvg.style.display = 'inline';
         const container = document.querySelector('.container')
         container.style.display ='none';
         const lakeFront = document.querySelector('.container')
         const gameBoard = document.querySelector('.gameBoard')
         gameBoard.style.display ='inline'
-        this.moveWaves()
-        this.fishSwimming()
+        this.moveWaves();
+        this.fishSwimming();
+        this.goFishing();
     },
     
     
@@ -51,6 +51,7 @@ const gameObject = {
     up: true,
     hide: false,
     gameOver: false,
+    fishExist: false,
     
     fishingPole(){
         const net = document.querySelector('#innerRect');
@@ -153,39 +154,45 @@ const gameObject = {
         },500)
     },
     gameInit(){
+        const container = document.querySelector('.container')
+        container.style.display = 'block';
         const topSvg = document.querySelector('svg');
         topSvg.style.display = 'none';
-        this.fishingPole();
-        this.hookedAlert();
-        this.fishOnHook();
-        this.fishStats();
+        
         const fish = document.querySelector('#fish')
         const lake = document.querySelector('.lake')
         const rect = document.querySelector('.rect')
-        // const lakeFront = document.querySelector('.lakeFront')
         const innerRect = document.querySelector('#innerRect')
         const fishIcon = document.createElement('img')
         fishIcon.setAttribute('src', 'img/fish-solid.svg')
         innerRect.setAttribute('style', 'opactiy: 1')
         rect.setAttribute('style', 'background-color: whitesmoke')
-        // lakeFrontstyle.display = 'none'
-        fish.appendChild(fishIcon);
-    },
-    hideContainer(){
-        
-        const contain = document.querySelector('.container')
-        if (this.hide){
-            this.hide = !this.hide
-            contain.style.display = 'none';
-        } else {
-            this.hide = !this.hide
-            contain.style.display = 'block';
+        this.fishingPole();
+        this.hookedAlert();
+        this.fishOnHook();
+        this.fishStats();
+        if (!this.fishExist){
+            fish.appendChild(fishIcon);
+            
+            this.fishExist = !this.fishExist
         }
+            
+    },
+    // hideContainer(){
         
-    }
+    //     const contain = document.querySelector('.container')
+    //     if (this.hide){
+    //         this.hide = !this.hide
+    //         contain.style.display = 'none';
+    //     } else {
+    //         this.hide = !this.hide
+    //         contain.style.display = 'block';
+    //     }
+        
+    // }
 }
+lake.lakeRipple();
 
-gameObject.gameInit();
 
 
 //transform: rotateX(-44deg) rotate3d(0, -48, 31, 180deg)
