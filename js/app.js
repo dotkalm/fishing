@@ -1,14 +1,18 @@
 const lake = {
+    fishInLake: false,
     goFishing(){
         gameObject.gameOver=false
-        document.querySelector('.wavesClass').addEventListener('click', e =>{ 
-            if (e.target.id === 'fishInWater'){
-                gameObject.gameInit();
-            }
-        })
+        if (!this.fishInLake){
+            document.querySelector('.wavesClass').addEventListener('click', e =>{ 
+                if (e.target.id === 'fishInWater'){
+                    console.log('fish in the water')
+                    gameObject.gameInit();
+                }
+            })
+        }
     },
     moveWaves(){
-        const waves = document.querySelectorAll('path');
+        const waves = document.querySelectorAll('.lakeWaves');
             waves.forEach((item, index)=>{
                 if (index % 2 === 0){
                     waves[index].setAttribute('id','even')
@@ -26,11 +30,12 @@ const lake = {
         fishy.setAttribute('fill','#000000');
         fishy.setAttribute('d','M183.438,126.222c-6.108,0-11.441,3.718-14.41,6.899l-5.928-4.483c-0.823-0.624-2.053,0.041-1.843,0.995 l1.642,7.451l-1.642,7.451c-0.211,0.955,1.019,1.618,1.842,0.995l5.929-4.484c2.968,3.181,8.302,6.898,14.41,6.898 c9.33,0,16.896-8.688,16.896-10.861S192.768,126.222,183.438,126.222z M189.373,138.712c-0.899,0-1.629-0.729-1.629-1.629 c0-0.9,0.729-1.629,1.629-1.629c0.9,0,1.629,0.729,1.629,1.629C191.001,137.983,190.272,138.712,189.373,138.712z')
         waves.insertBefore(fishy, waves.children[18])
+        this.fishInLake = !this.fishInLake
     },
     lakeRipple(){
         const wavesClass = document.querySelector('.wavesClass');
         wavesClass.style.display = 'flex';
-        wavesClass.setAttribute('style','transform: translateY(-35rem);')
+        wavesClass.setAttribute('style','transform: translateY(-29rem);')
         const topSvg = document.querySelector('svg');
         topSvg.style.display = 'inline';
         const container = document.querySelector('.container')
@@ -39,8 +44,11 @@ const lake = {
         const gameBoard = document.querySelector('.gameBoard')
         gameBoard.style.display ='inline'
         this.moveWaves();
-        this.fishSwimming();
         this.goFishing();
+        if(!this.fishInLake){
+            this.fishSwimming();
+
+        }
     },
     
     
@@ -93,7 +101,8 @@ const gameObject = {
             }
         }, 75)
     },
-    fishStats(){
+    fishStatbar(){
+        console.log("fish Statbar")
         let r = 100;
         let g = 0;
         let statBar = 390;
@@ -119,6 +128,7 @@ const gameObject = {
                 statBar -= 2.5;  
                 holdFor3Seconds += 60;
                 if (statBar<=0){
+                    console.log("fish stats1111")
                     const title = document.querySelector('.titleScreen');
                     const titleScreen = document.createElement('h2')
                     titleScreen.innerText = 'Nice Catch!';
@@ -153,6 +163,7 @@ const gameObject = {
         },1000)
     },
     gameInit(){
+        console.log("game being init")
         const container = document.querySelector('.container')
         container.style.display = 'block';
         const topSvg = document.querySelector('svg');
@@ -165,9 +176,9 @@ const gameObject = {
         innerRect.setAttribute('style', 'opactiy: 1')
         rect.setAttribute('style', 'background-color: whitesmoke')
         this.fishingPole();
-        this.hookedAlert();
+        // this.hookedAlert();
         this.fishOnHook();
-        this.fishStats();
+        this.fishStatbar();
         if (!this.fishExist){
             fish.appendChild(fishIcon);
             
