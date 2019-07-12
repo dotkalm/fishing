@@ -1,6 +1,6 @@
 # Fish The Big One
 
-![Joel Holmberg Fishing Game](playthru.gif)
+![Joel Holmberg Fishing Game](img/playthru.gif)
 
 **The Big One** is out there, you just need to catch it. 
 
@@ -12,7 +12,7 @@ As the fish tries to escape it will drag the blue square downward, **crank the r
 
 **The Big One is yours** when the status bar turns green. 
 
-![MacDown Screenshot](nicecatch.gif)
+![MacDown Screenshot](img/nicecatch.gif)
 
 
 ## Javascript, CSS, SVG, HTML, and WebAudio API
