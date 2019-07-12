@@ -18,14 +18,14 @@ As the fish tries to escape it will drag the blue square downward, **crank the r
 ## Built with Javascript, CSS, SVG, HTML, and WebAudio API
 A page with working sound files can be seen [here](https://dotkalm.github.io/fishing/).
 
-#Author
+# Author
 Joel Holmberg
 
 
-#Acknowledgements
-[Web Audio MDN docs] (https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API)
+# Acknowledgements
+[Web Audio MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Using_Web_Audio_API)
 
-[SVG MDN docs] (https://developer.mozilla.org/en-US/docs/Web/SVG)
+[SVG MDN docs](https://developer.mozilla.org/en-US/docs/Web/SVG)
 
 Inspiration for this game came from 
 [Stardew Valley](https://www.stardewvalley.net/)
