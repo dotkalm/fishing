@@ -10,7 +10,6 @@
     animation: title 1s infinite;
 }
 .titleScreen{
-<<<<<<< HEAD
     height: 50px;
     display: block;
 }
@@ -18,10 +17,6 @@
     display: inline-flex;
     font-size: 5rem;
     transform: rotate3d(1, 0, -1, 45deg) translate3d(-4rem, 7rem, 10px);
-=======
-    height: 32px;
-
->>>>>>> ac6783ced073a04675638f88ed4ba6e89f079a1b
 }
 svg #odd{
     animation: odd 10s infinite
@@ -96,9 +91,4 @@ svg #even{
 @keyframes fishy{
     0% {transform: translate3d(-15rem, 9rem, 10rem)}
     100% {transform: translate3d(15rem, 9rem, 10rem)}
-<<<<<<< HEAD
     }
-=======
-    }
-
->>>>>>> ac6783ced073a04675638f88ed4ba6e89f079a1b
